@@ -1,0 +1,36 @@
+@import "bootstrap"; /* 6460 lines */
+
+$green-lighter: #daf3e7;
+$green-lightest: #e9f3ee;
+$green-grey: #a0b0a1;
+$green-dark: #084628;
+
+.navbar .navbar-inner {
+  background: $green-grey;
+
+  .brand {
+    font-size: 3em;
+    line-height: 1em;
+    color: black;
+    text-shadow: 1px 1px 0 $green-lightest;
+  }
+}
+
+.brand-subtitle {
+  font-size: 10px;
+  padding-top: 95px;
+  margin-left: 25px;
+}
+
+body {
+  padding-top: 0px;
+  background: $green-lighter;
+}
+
+.sidebar {
+  border-left: solid $green-dark 4px;
+  border-bottom: solid $green-dark 4px;
+  padding-left: 10px;
+}
+
+@import "bootstrap-responsive";
