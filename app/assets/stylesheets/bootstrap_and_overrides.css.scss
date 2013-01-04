@@ -34,6 +34,15 @@ $green-dark: #006d39;
   }
 }
 
+.container {
+  background: #d0f0e0;
+  -webkit-box-shadow: 0 8px 10px black;
+  -webkit-border-bottom-right-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  padding: 20px;
+  @include top-to-bottom-gradient($green-lighter, #b0d0c0);
+}
+
 .brand-subtitle {
   font-size: 10px;
   padding-top: 95px;
