@@ -1,8 +1,14 @@
 Blog::Application.routes.draw do
+
   devise_for :users
-  devise_scope :user do
-    root to: 'devise/sessions#new'    
-  end
+  # devise_scope :user do
+  #   root to: 'devise/sessions#new'
+  # end
+
+  root to: 'entries#new'
+  root to: 'entries#index'
+
+  resources :entries
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
