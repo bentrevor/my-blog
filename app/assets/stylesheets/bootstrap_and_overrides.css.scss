@@ -19,7 +19,6 @@ $green-dark: #006d39;
   background: $green-grey; /* fallback color */
 
   /* Gradients for modern browsers */
-
   @include top-to-bottom-gradient($green-lightest, $green-dark);
 
   border: 1px solid $green-dark;

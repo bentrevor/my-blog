@@ -25,6 +25,9 @@ group :test do
 end
 
 gem 'figaro'
+gem 'cancan'
+gem 'rolify'
+gem 'rb-readline'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
