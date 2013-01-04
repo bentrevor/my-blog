@@ -5,7 +5,6 @@ Blog::Application.routes.draw do
   #   root to: 'devise/sessions#new'
   # end
 
-  root to: 'entries#new'
   root to: 'entries#index'
 
   resources :entries

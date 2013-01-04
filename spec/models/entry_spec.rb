@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Entry do
-  before { @entry = Entry.new(title: "post title", content: "post body") }
+  before { @entry = FactoryGirl.create(:entry) }
   subject { @entry }
 
   it { should respond_to :title }
