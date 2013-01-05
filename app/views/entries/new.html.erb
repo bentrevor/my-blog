@@ -1,10 +1,10 @@
-<h2 class="cssmatcher"><%= @title || "Ben Trevor's Blog" %></h2>
+<h2><%= @title || "Ben Trevor's Blog" %></h2>
 <%= form_for @entry do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title %>
 
   <%= f.label :Content, "Content" %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content %><br />
 
   <%= f.submit "Create Entry" %>
 <% end %>
