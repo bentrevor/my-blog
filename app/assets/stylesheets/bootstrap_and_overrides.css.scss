@@ -43,6 +43,13 @@ $green-dark: #006d39;
   @include top-to-bottom-gradient($green-lighter, #b0d0c0);
 }
 
+.debug-container {
+  margin-top: 100px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .brand-subtitle {
   font-size: 10px;
   padding-top: 95px;

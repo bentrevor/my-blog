@@ -24,7 +24,7 @@ describe "Entry" do
 
       it "should show a flash[:success] message" do
         click_button "Create Entry"
-        expect(page).to have_selector("#success")
+        expect(page).to have_selector(".alert-success")
       end
 
     end
@@ -37,7 +37,8 @@ describe "Entry" do
       end
 
       it "should show flash[:error] message" do
-        pending
+        click_button "Create Entry"
+        expect(page).to have_selector(".alert-error")
       end
     end
   end
