@@ -8,10 +8,6 @@ describe EntriesController do
       get :index
       response.should be_success
     end
-
-    it "should show a list of entry titles" do
-      pending "test for index action"
-    end
   end
 
   describe "show action" do
@@ -19,41 +15,24 @@ describe EntriesController do
       get :show, id: @entry
       response.should be_success
     end
-
-    it "should show the correct entry title" do
-      pending "test for show action"
-    end
-
-    it "should show the correct entry content" do
-      pending "test for show action"
-    end
-
-    it "should have a link to the previous entry" do
-      pending "test for show action"
-    end
-
-    describe "'next entry' link" do
-      it "should link to the next entry" do
-        pending "test for show action"
-      end
-
-      it "should be disabled if current entry is the newest entry" do
-        pending "test for show action"
-      end
-    end
   end
-#
+
   describe "new action" do
+    before { get :new }
     it "should return http success" do
-      get :new
       response.should be_success
     end
   end
 
-  describe "create action" do
-    it "should return http success" do
-      get :create
-      response.should be_success
+  describe "create action success" do
+    it "should add user to database" do
+      pending
+    end
+  end
+
+  describe "create action failure" do
+    it "should not add user to database" do
+      pending
     end
   end
 
@@ -64,10 +43,15 @@ describe EntriesController do
     end
   end
 
-  describe "update action" do
-    it "should return http success" do
-      put :update, id: @entry
-      response.should be_success
+  describe "update action success" do
+    it "should change attributes of entry" do
+      pending
+    end
+  end
+
+  describe "update action failure" do
+    it "should not change attributes of entry" do
+      pending
     end
   end
 
@@ -77,5 +61,4 @@ describe EntriesController do
       response.should be_success
     end
   end
-
 end

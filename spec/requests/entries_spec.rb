@@ -1,11 +1,21 @@
-# require 'spec_helper'
+require 'spec_helper'
+require 'capybara/rails'
+require 'capybara/rspec'
 
-# describe "Entries" do
-#   describe "GET /entries" do
-#     it "works! (now write some real specs)" do
-#       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-#       get entries_index_path
-#       response.status.should be(200)
-#     end
-#   end
-# end
+describe "Entry" do
+  describe "creation" do
+    describe "success" do
+      it "should add entry to database" do
+        visit new_entry_path
+        # fill_in ""
+        assert true
+      end
+    end
+
+    describe "failure" do
+      it "should not add entry to database" do
+        pending
+      end
+    end
+  end
+end

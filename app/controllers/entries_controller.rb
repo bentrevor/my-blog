@@ -6,6 +6,8 @@ class EntriesController < ApplicationController
   end
 
   def new
+    @title = "Write a new blog entry:"
+    # @entry = Entry.new
   end
 
   def create
