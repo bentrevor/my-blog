@@ -1,10 +1,11 @@
-<h2><%= @title || "Ben Trevor's Blog" %></h2>
+<h2>Write a new blog entry:</h2>
+
 <%= form_for @entry do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title %>
 
-  <%= f.label :Content, "Content" %>
-  <%= f.text_area :content %><br />
+  <%= f.label :content, "Content" %>
+  <%= f.text_area :content, class: "span12" %><br />
 
   <%= f.submit "Create Entry" %>
 <% end %>

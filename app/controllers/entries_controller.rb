@@ -3,14 +3,21 @@ class EntriesController < ApplicationController
   end
 
   def show
+    @entry = Entry.find(params[:id])
   end
 
   def new
-    @title = "Write a new blog entry:"
     @entry = Entry.new
   end
 
   def create
+    @entry = Entry.new(params[:entry])
+    if @entry.save
+      redirect_to @entry, flash: { success: "Entry successfully created" }
+    else
+      flash.now[:error] = "There was an error saving the entry"
+      render 'new'
+    end
   end
 
   def edit
