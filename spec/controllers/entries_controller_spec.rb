@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe EntriesController do
-  before { @entry = FactoryGirl.build(:entry) }
+  before { @entry = FactoryGirl.create(:entry) }
 
   describe "index action" do
     it "should return http success" do
