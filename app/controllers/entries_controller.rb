@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entry.new
+    @entry = Entry.new()
   end
 
   def create

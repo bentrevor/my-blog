@@ -15,6 +15,14 @@ $green-dark: #006d39;
   background-repeat: repeat-x;
 }
 
+@mixin box-shadow($vertical, $horizontal, $blur, $color) {
+  -moz-box-shadow: $vertical $horizontal $blur $color;
+  -ms-box-shadow: $vertical $horizontal $blur $color;
+  -webkit-box-shadow: $vertical $horizontal $blur $color;
+  -o-box-shadow: $vertical $horizontal $blur $color;
+  box-shadow: $vertical $horizontal $blur $color;
+}
+
 .navbar .navbar-inner {
   background: $green-grey; /* fallback color */
 
@@ -22,7 +30,9 @@ $green-dark: #006d39;
   @include top-to-bottom-gradient($green-lightest, $green-dark);
 
   border: 1px solid $green-dark;
-  -webkit-box-shadow: 0 10px 50px black;
+
+  @include box-shadow(0, 10px, 50px, #000);
+
 
   margin-bottom: 50px;
 
@@ -36,11 +46,22 @@ $green-dark: #006d39;
 
 .container {
   background: #d0f0e0;
-  -webkit-box-shadow: 0 8px 10px black;
+  @include box-shadow(0, 8px, 10px, #000);
+ 
+  -moz-border-bottom-right-radius: 20px;
+  -ms-border-bottom-right-radius: 20px;
   -webkit-border-bottom-right-radius: 20px;
+  -o-border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  -moz-border-bottom-left-radius: 20px;
+  -ms-border-bottom-left-radius: 20px;
   -webkit-border-bottom-left-radius: 20px;
+  -o-border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   padding: 20px;
   @include top-to-bottom-gradient($green-lighter, #b0d0c0);
+  margin-top: 0px;
 }
 
 .debug-container {

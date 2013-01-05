@@ -26,7 +26,6 @@ describe "Entry" do
         click_button "Create Entry"
         expect(page).to have_selector(".alert-success")
       end
-
     end
 
     describe "failure" do
