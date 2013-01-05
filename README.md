@@ -1,1 +1,1 @@
-I made my own blogging engine to practice using Devise and RSpec.  It is hosted by heroku.
+I made my own blogging engine to practice using Devise, CanCan, and RSpec.  It is hosted by heroku.

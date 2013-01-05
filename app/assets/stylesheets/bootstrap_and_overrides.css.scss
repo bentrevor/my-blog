@@ -1,0 +1,75 @@
+@import "bootstrap"; /* 6460 lines */
+
+$green-lighter: #daf3e7;
+$green-lightest: #e9f3ee;
+$green-grey: #a0b0a1;
+$green-dark: #006d39;
+
+@mixin top-to-bottom-gradient($top-color, $bottom-color) {
+  background-image: -moz-linear-gradient(top, $top-color, $bottom-color);
+  background-image: -ms-linear-gradient(top, $top-color, $bottom-color);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($top-color), to($bottom-color));
+  background-image: -webkit-linear-gradient(top, $top-color, $bottom-color);
+  background-image: -o-linear-gradient(top, $top-color, $bottom-color);
+  background-image: linear-gradient(top, $top-color, $bottom-color);
+  background-repeat: repeat-x;
+}
+
+.navbar .navbar-inner {
+  background: $green-grey; /* fallback color */
+
+  /* Gradients for modern browsers */
+  @include top-to-bottom-gradient($green-lightest, $green-dark);
+
+  border: 1px solid $green-dark;
+  -webkit-box-shadow: 0 10px 50px black;
+
+  margin-bottom: 50px;
+
+  .brand {
+    font-size: 3em;
+    line-height: 1em;
+    color: black;
+    text-shadow: 1px 1px 0 $green-lightest;
+  }
+}
+
+.container {
+  background: #d0f0e0;
+  -webkit-box-shadow: 0 8px 10px black;
+  -webkit-border-bottom-right-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  padding: 20px;
+  @include top-to-bottom-gradient($green-lighter, #b0d0c0);
+}
+
+.debug-container {
+  margin-top: 100px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-subtitle {
+  font-size: 10px;
+  padding-top: 95px;
+  margin-left: 25px;
+  color: #ddd;
+
+  a {
+    color: black;
+  }
+}
+
+body {
+  padding-top: 0px;
+  background: $green-lighter;
+}
+
+.sidebar {
+  border-left: solid $green-dark 4px;
+  border-bottom: solid $green-dark 4px;
+  padding-left: 10px;
+}
+
+@import "bootstrap-responsive";

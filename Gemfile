@@ -1,14 +1,22 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 gem 'rails', '3.2.6'
-gem 'sqlite3'
+gem 'pg'
 gem 'jquery-rails'
 gem 'devise'
+gem 'bootstrap-sass'
+gem 'heroku'
+gem 'figaro'
+gem 'cancan'
+gem 'rolify'
+gem 'rb-readline'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'bootstrap-sass'
 end
 
 group :development, :test do
@@ -22,14 +30,17 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :production do
+  gem 'thin'
+end
+
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
