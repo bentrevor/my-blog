@@ -4,23 +4,46 @@ describe EntriesController do
   before { @entry = FactoryGirl.create(:entry) }
 
   describe "index action" do
-    it "should return http success" do
-      get :index
+    before { 2.times { FactoryGirl.create(:new_entry) } }
+    before { get :index }
+
+    it "should return http success and render index view" do
       response.should be_success
+      response.should render_template :index
+    end
+
+    it "should create @entries array" do
+      assigns(:entries).should eq([Entry.find(1), Entry.find(2), Entry.find(3)])
+      assigns(:entries).length.should eq(Entry.count)
     end
   end
 
   describe "show action" do
-    it "should return http success" do
-      get :show, id: @entry
+    before { get :show, id: @entry }
+
+    it "should return http success and render show view" do
       response.should be_success
+      response.should render_template :show
+    end
+
+    it "should assign @entry based on params" do
+      assigns(:entry).should eq(@entry)
+
+      new_entry = FactoryGirl.create(:new_entry)
+      get :show, id: new_entry
+      assigns(:entry).should eq(new_entry)
     end
   end
 
   describe "new action" do
+    before { get :new }
+
     it "should return http success" do
-      get :new
       response.should be_success
+    end
+
+    it "should assign @entry to a new record" do
+      assigns(:entry).should be_new_record
     end
   end
 

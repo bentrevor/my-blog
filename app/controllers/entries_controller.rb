@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   def index
+    @entries = Entry.all
   end
 
   def show
@@ -35,8 +36,7 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    @entry = Entry.find(params[:id])
-    @entry.destroy
+    Entry.find(params[:id]).destroy
     redirect_to entries_path
   end
 end
