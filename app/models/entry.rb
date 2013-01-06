@@ -1,4 +1,5 @@
 class Entry < ActiveRecord::Base
+  resourcify
   attr_accessible :content, :title
 
   validates :content, presence: true

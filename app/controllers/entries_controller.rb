@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_filter :authenticate_user!, except: [ :about ]
+
   def index
     @entries = Entry.all
   end
@@ -41,6 +43,6 @@ class EntriesController < ApplicationController
   end
 
   def about
-    
+
   end
 end
