@@ -39,4 +39,8 @@ class EntriesController < ApplicationController
     Entry.find(params[:id]).destroy
     redirect_to entries_path
   end
+
+  def about
+    
+  end
 end

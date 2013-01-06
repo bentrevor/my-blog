@@ -5,9 +5,11 @@ Blog::Application.routes.draw do
   #   root to: 'devise/sessions#new'
   # end
 
-  root to: 'entries#new'
+  root to: 'entries#about'
 
   resources :entries
+  match "/about", to: 'entries#about'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

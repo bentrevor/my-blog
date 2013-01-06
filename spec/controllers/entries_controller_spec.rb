@@ -7,7 +7,7 @@ describe EntriesController do
     before { 2.times { FactoryGirl.create(:new_entry) } }
     before { get :index }
 
-    it "should return http success and render index view" do
+    it "should return http success and render :index template" do
       response.should be_success
       response.should render_template :index
     end
@@ -21,7 +21,7 @@ describe EntriesController do
   describe "show action" do
     before { get :show, id: @entry }
 
-    it "should return http success and render show view" do
+    it "should return http success and render :show template" do
       response.should be_success
       response.should render_template :show
     end
@@ -38,8 +38,9 @@ describe EntriesController do
   describe "new action" do
     before { get :new }
 
-    it "should return http success" do
+    it "should return http success and render :new template" do
       response.should be_success
+      response.should render_template :new
     end
 
     it "should assign @entry to a new record" do
@@ -134,6 +135,14 @@ describe EntriesController do
     it "should redirect to index" do
       delete :destroy, id: @entry
       response.should redirect_to entries_url
+    end
+  end
+
+  describe "about action" do
+    it "should return http success and render :about template" do
+      get :about
+      response.should be_success
+      response.should render_template :about
     end
   end
 end
