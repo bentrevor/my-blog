@@ -26,7 +26,7 @@ class EntriesController < ApplicationController
 
   def update
     @entry = Entry.find(params[:id])
-    if @entry.update_attributes(params[:entry]) && @entry.valid?
+    if @entry.update_attributes(params[:entry])
       redirect_to @entry
     else
       flash.now[:error] = "There was an error updating the entry"
@@ -35,5 +35,8 @@ class EntriesController < ApplicationController
   end
 
   def destroy
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+    redirect_to entries_path
   end
 end

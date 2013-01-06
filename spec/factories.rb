@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
 
   factory :new_entry, class: Entry do
-    title "different factory title"
-    content "different factory content"
+    title "new title"
+    content "new content"
   end
 end
