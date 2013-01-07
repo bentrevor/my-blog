@@ -1,6 +1,8 @@
 class EntriesController < ApplicationController
+  before_filter :authenticate_user!, except: [ :about, :show ]
+  load_and_authorize_resource except: [ :about, :show ]
+
   def index
-    @entries = Entry.all
   end
 
   def show
@@ -8,11 +10,9 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entry.new()
   end
 
   def create
-    @entry = Entry.new(params[:entry])
     if @entry.save
       redirect_to @entry, flash: { success: "Entry successfully created" }
     else
@@ -22,11 +22,9 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    @entry = Entry.find(params[:id])
   end
 
   def update
-    @entry = Entry.find(params[:id])
     if @entry.update_attributes(params[:entry])
       redirect_to @entry
     else
@@ -36,11 +34,15 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    Entry.find(params[:id]).destroy
+    @entry.destroy
     redirect_to entries_path
   end
 
   def about
-    
+    if current_user
+      @title = "yes"
+    else
+      @title = "no"
+    end
   end
 end

@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe EntriesController do
-  before { @entry = FactoryGirl.create(:entry) }
+  before(:each) do
+    @entry = FactoryGirl.create(:entry)
+    @user = FactoryGirl.create(:user)
+    @user.add_role :admin
+    sign_in @user
+  end
 
   describe "index action" do
     before { 2.times { FactoryGirl.create(:new_entry) } }

@@ -8,4 +8,11 @@ FactoryGirl.define do
     title "new title"
     content "new content"
   end
+
+  factory :user do
+    name "factoryuser name"
+    email "factoryuser@email.com"
+    password "factoryuserpw"
+    password_confirmation "factoryuserpw"
+  end
 end
