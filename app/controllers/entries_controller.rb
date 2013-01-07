@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :authenticate_user!, except: [ :about, :show ]
+  load_and_authorize_resource except: [ :about, :show ]
 
   def index
     @entries = Entry.all
