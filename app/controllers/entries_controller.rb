@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_filter :authenticate_user!, except: [ :about ]
+  before_filter :authenticate_user!, except: [ :about, :show ]
 
   def index
     @entries = Entry.all
@@ -43,6 +43,10 @@ class EntriesController < ApplicationController
   end
 
   def about
-
+    if current_user
+      @title = "yes"
+    else
+      @title = "no"
+    end
   end
 end

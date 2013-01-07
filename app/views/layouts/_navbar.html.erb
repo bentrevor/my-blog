@@ -1,6 +1,14 @@
 <header class="navbar">
   <div class="navbar-inner">
-    <p><a href="#" class="brand">Sweet Empowered<br />Chicken Things</a></p>
-    <p class="brand-subtitle">(<a href="http://www.youtube.com/watch?v=Jfq3c4Cf1Fs">Ricky</a> is my spirit guide.)</p>
+    <div class="span6">
+      <p><a href="#" class="brand">Sweet Empowered<br />Chicken Things</a></p>
+      <p class="brand-subtitle">(<a href="http://www.youtube.com/watch?v=Jfq3c4Cf1Fs">Ricky</a> is my spirit guide.)</p>
+    </div>
+    <div class="span6">
+      <% if current_user && current_user.has_role?(:admin) %>
+        Signed in as <%= current_user.name %><br />
+      <% end %>
+      <div class="container">admin buttons</div>
+    </div>
   </div>
 </header>
