@@ -39,4 +39,12 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  # method to check that requests for user pages get redirected
+  def check_user_pages_redirection
+    it "should redirect away with flash message" do
+      response.should redirect_to root_path
+      # flash[:notice].should =~ /sorry/i
+    end
+  end
 end
