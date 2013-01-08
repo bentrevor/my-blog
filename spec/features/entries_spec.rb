@@ -3,8 +3,12 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Visiting site" do
+  before { FactoryGirl.create(:first_entry) }
+  
   describe "as guest", type: :feature do
-    let(:entry){ FactoryGirl.create(:new_entry) }
+    let(:entry) { FactoryGirl.create(:entry) }
+    let(:new_entry) { FactoryGirl.create(:new_entry) }
+
 
     it "should be able to read entries" do
       visit "/entries/#{entry.id}"
@@ -18,8 +22,17 @@ describe "Visiting site" do
       # expect redirection...
     end
 
+    it "should be able to see index of all entry titles" do
+      entry
+      new_entry
+      visit entries_path
+
+      expect(page).to have_selector("h2", text: entry.title)
+      expect(page).to have_selector("h2", text: new_entry.title)
+    end
+
+    it "should be able to follow sidebar links"
     it "should not see admin links"
-    it "should be able to see index of all entry titles"
     it "should not be able to write a new entry"
     it "should not be able to visit any user page"
 
