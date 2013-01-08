@@ -1,2 +1,11 @@
+<div class="btn-group">
+  <% if can? :edit, @entry %>
+    <%= link_to "Edit this entry", edit_entry_path(@entry), class: "btn" %>
+  <% end %>
+  <% if can? :delete, @entry %>
+    <%= link_to "Delete this entry", {action: :destroy}, method: :delete, class: "btn" %>
+  <% end %>
+</div>
+
 <h2><%= @entry.title %></h2>
 <p><%= @entry.content %></p>

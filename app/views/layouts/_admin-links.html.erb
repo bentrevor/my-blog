@@ -1,11 +1,10 @@
-<div class="span6">
+<div class="span6 pull-right">
   <% if current_user %>
     Signed in as <%= current_user.name %><br />
-    <% if can? :read, @entry %>
-      read
-    <% end %>
-    <% if can? :edit, @entry %>
-      <%= @entry %>
-    <% end %>
+    <div class="btn-group">
+      <% if current_user.has_role? :admin %>
+        <%= link_to "Write new entry", new_entry_path, class: "btn" %>
+      <% end %>
+    </div>
   <% end %>
 </div>
