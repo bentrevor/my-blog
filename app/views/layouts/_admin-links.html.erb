@@ -1,0 +1,11 @@
+<div class="span6">
+  <% if current_user %>
+    Signed in as <%= current_user.name %><br />
+    <% if can? :read, @entry %>
+      read
+    <% end %>
+    <% if can? :edit, @entry %>
+      <%= @entry %>
+    <% end %>
+  <% end %>
+</div>

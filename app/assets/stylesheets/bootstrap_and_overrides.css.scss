@@ -31,7 +31,7 @@ $green-dark: #006d39;
 
   border: 1px solid $green-dark;
 
-  @include box-shadow(0, 10px, 50px, #000);
+  @include box-shadow(0, 10px, 30px, #000);
 
 
   margin-bottom: 50px;
@@ -46,7 +46,7 @@ $green-dark: #006d39;
 
 .container {
   background: #d0f0e0;
-  @include box-shadow(0, 8px, 10px, #000);
+  @include box-shadow(0, 12px, 10px, #000);
  
   -moz-border-bottom-right-radius: 20px;
   -ms-border-bottom-right-radius: 20px;

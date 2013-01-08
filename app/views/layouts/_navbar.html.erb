@@ -4,10 +4,6 @@
       <p><a href="#" class="brand">Sweet Empowered<br />Chicken Things</a></p>
       <p class="brand-subtitle">- <a href="http://www.youtube.com/watch?v=Jfq3c4Cf1Fs">Ricky</a></p>
     </div>
-    <div class="span6">
-      <% if current_user && current_user.has_role?(:admin) %>
-        Signed in as <%= current_user.name %><br />
-      <% end %>
-    </div>
+    <%= render "layouts/admin-links" %>
   </div>
 </header>
