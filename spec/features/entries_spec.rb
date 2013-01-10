@@ -3,9 +3,12 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Visiting site" do
-  describe "as guest", type: :feature do
-    let(:entry){ FactoryGirl.create(:new_entry) }
+  # ensures the entries database always has one entry
+  before { @first_entry = FactoryGirl.create(:first_entry) }
+  let(:entry) { FactoryGirl.create(:entry) }
+  let(:new_entry) { FactoryGirl.create(:new_entry) }
 
+  describe "as guest", type: :feature do
     it "should be able to read entries" do
       visit "/entries/#{entry.id}"
       expect(page).to have_selector("h2", text: entry.title)
@@ -13,16 +16,40 @@ describe "Visiting site" do
     end
 
     it "should not be able to edit an entry" do
-      visit "/entries/#{entry.id}/edit"
-      pending
-      # expect redirection...
+      expect_redirect_away_from "/entries/#{entry.id}/edit"
     end
 
-    it "should not see admin links"
-    it "should be able to see index of all entry titles"
-    it "should not be able to write a new entry"
-    it "should not be able to visit any user page"
+    it "should be able to see index of all entry titles" do
+      entry
+      new_entry
+      visit entries_path
 
+      expect(page).to have_selector("h2", text: entry.title)
+      expect(page).to have_selector("h2", text: new_entry.title)
+    end
+
+    it "should be able to follow sidebar links" do
+      new_entry
+      visit root_path
+      click_link "Newest Entry"
+      expect(current_path).to eq("/entries/#{new_entry.id}")
+      click_link "About"
+      expect(current_path).to eq("/about")
+      click_link "Archives"
+      expect(current_path).to eq("/entries")
+    end
+
+    it "should not see admin links" do
+      new_entry
+      visit entry_path(new_entry)
+      expect(page).not_to have_selector("a.btn")
+    end
+
+    it "should not be able to visit any user page" do
+      expect_redirect_away_from "/users/sign_in"
+      expect_redirect_away_from "/users/sign_up"
+      expect_redirect_away_from "/users/edit"
+    end
   end
 
   describe "as admin", type: :feature do
@@ -42,6 +69,15 @@ describe "Visiting site" do
       expect(page).to have_selector("h2", text: entry.title)
       expect(page).to have_selector("p", text: entry.content)
     end
+
+    it "should see admin links" do
+      new_entry
+      visit entry_path(new_entry)
+      expect(page).to have_selector("a.btn", text: "Write new entry")
+      expect(page).to have_selector("a.btn", text: "Edit this entry")
+      expect(page).to have_selector("a.btn", text: "Delete this entry")
+    end
+
 
     it "should see admin links"
     it "should be able to edit an entry"
