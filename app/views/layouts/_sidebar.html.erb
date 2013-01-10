@@ -1,7 +1,7 @@
 <nav>
   <ul>
-    <li><%= link_to "Newest Entry", "#", action: "show" %></li>
-    <li><%= link_to "About", "#",        action: "about" %></li>
-    <li><%= link_to "Archives", "#",     action: "index" %></li>
+    <li><%= link_to "Newest Entry", entry_path(Entry.last), action: :show %></li>
+    <li><%= link_to "About",        about_path,             action: :about %></li>
+    <li><%= link_to "Archives",     entries_path,           action: :index %></li>
   </ul>
 </nav>
