@@ -9,7 +9,7 @@ FactoryGirl.define do
     content "new content"
   end
 
-  factory :first_entry, class Entry do
+  factory :first_entry, class: Entry do
     title "first title"
     content "first content"
   end

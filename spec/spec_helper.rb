@@ -47,4 +47,9 @@ RSpec.configure do |config|
       # flash[:notice].should =~ /sorry/i
     end
   end
+
+  def expect_redirect_away_from(path)
+    visit path
+    expect(current_path).not_to eq(path)
+  end
 end
