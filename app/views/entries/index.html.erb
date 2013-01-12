@@ -1,5 +1,7 @@
-<h1>Entries#index</h1>
-<p>Find me in app/views/entries/index.html.erb</p>
-<% @entries.each do |entry| %>
-  <h2><%= entry.title %></h2>
-<% end %>
+<h1>Archives</h1>
+
+<ul>
+  <% @entries.each do |entry| %>
+    <li class="no-bullet"><%= link_to entry.title, entry_path(entry), action: :show %> - <span class="smaller"><%= time_ago_in_words(entry.created_at) %> ago</span></li>
+  <% end %>
+</ul>

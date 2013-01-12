@@ -79,7 +79,6 @@ describe "Visiting site" do
     end
 
 
-    it "should see admin links"
     it "should be able to edit an entry"
     it "should be able to delete an entry"
     it "should be able to write a new entry"

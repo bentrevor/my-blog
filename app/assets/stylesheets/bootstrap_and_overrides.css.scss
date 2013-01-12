@@ -93,4 +93,12 @@ body {
   padding-left: 10px;
 }
 
+.no-bullet {
+  list-style-type: none;
+  
+  .smaller {
+  font-size: 80%;
+  }
+}
+
 @import "bootstrap-responsive";
