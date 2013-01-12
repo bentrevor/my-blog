@@ -1,5 +1,6 @@
 class SessionsController < Devise::SessionsController
   def new
+    # super
     redirect_to root_path, 
                 flash: { notice: 
                         %Q[Sorry, not accepting new users right now.  

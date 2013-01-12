@@ -6,17 +6,15 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<body>
 <%= render "layouts/navbar" %>
 
   <div class="container">
     <%= render "layouts/messages" %>
 
     <div class="row-fluid">
-      <div class="span9">
-        <%= yield %>
-      </div>
+      <div class="span9"><%= yield %></div>
       <div class="span3 sidebar hidden-phone"><%= render "layouts/sidebar" %></div>
     </div>
   </div>
@@ -25,5 +23,9 @@
     <%= debug(params) if Rails.env.development? %>
   </div>
 
+  <% if @title %>
+    <p style="text-align:center"><%= @title %></p>
+  <% end %>
 </body>
+
 </html>

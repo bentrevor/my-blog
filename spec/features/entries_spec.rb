@@ -59,12 +59,16 @@ describe "Visiting site" do
     before(:each) do
       user = FactoryGirl.create(:user)
       user.add_role :admin
-      login_as(user, scope: user)
+      # login_as(user, scope: user)
+      visit new_user_session_path
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Sign in"
     end
 
-    after(:each) do
-      Warden.test_reset!
-    end
+    # after(:each) do
+    #   Warden.test_reset!
+    # end
 
     it "should be able to read entries" do
       visit "/entries/#{entry.id}"
@@ -72,9 +76,11 @@ describe "Visiting site" do
       expect(page).to have_selector("p", text: entry.content)
     end
 
-    xit "should see admin links" do
+    it "should see admin links" do
       new_entry
       visit entry_path(new_entry)
+
+      expect(page).to have_selector("p", text: "Signed in as")
       expect(page).to have_selector("a.btn", text: "Write new entry")
       expect(page).to have_selector("a.btn", text: "Edit this entry")
       expect(page).to have_selector("a.btn", text: "Delete this entry")

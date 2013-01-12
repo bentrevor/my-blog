@@ -40,7 +40,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  # method to check that requests for user pages get redirected
+  # assert redirection/flash messages in controller specs
   def check_user_pages_redirection
     it "should redirect away with flash message" do
       response.should redirect_to root_path
@@ -48,6 +48,7 @@ RSpec.configure do |config|
     end
   end
 
+  # assert redirection in feature specs
   def expect_redirect_away_from(path)
     visit path
     expect(current_path).not_to eq(path)
