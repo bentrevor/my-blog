@@ -24,8 +24,10 @@ describe "Visiting site" do
       new_entry
       visit entries_path
 
-      expect(page).to have_selector("h2", text: entry.title)
-      expect(page).to have_selector("h2", text: new_entry.title)
+      expect(page).to have_selector("li.no-bullet", text: entry.title)
+      expect(page).to have_selector("li.no-bullet", text: new_entry.title)
+      find_link(entry.title).should be_visible
+      find_link(new_entry.title).should be_visible
     end
 
     it "should be able to follow sidebar links" do
@@ -70,7 +72,7 @@ describe "Visiting site" do
       expect(page).to have_selector("p", text: entry.content)
     end
 
-    it "should see admin links" do
+    xit "should see admin links" do
       new_entry
       visit entry_path(new_entry)
       expect(page).to have_selector("a.btn", text: "Write new entry")
@@ -79,9 +81,9 @@ describe "Visiting site" do
     end
 
 
-    it "should be able to edit an entry"
-    it "should be able to delete an entry"
-    it "should be able to write a new entry"
+    # it "should be able to edit an entry"
+    # it "should be able to delete an entry"
+    # it "should be able to write a new entry"
 
   end
 end
