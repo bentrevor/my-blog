@@ -2,13 +2,13 @@ require 'spec_helper'
 include Warden::Test::Helpers
 Warden.test_mode!
 
-describe "Visiting site" do
+describe "Visiting site", type: :feature do
   # ensures the entries database always has one entry
   before { @first_entry = FactoryGirl.create(:first_entry) }
   let(:entry) { FactoryGirl.create(:entry) }
   let(:new_entry) { FactoryGirl.create(:new_entry) }
 
-  describe "as guest", type: :feature do
+  describe "as guest" do
     it "should be able to read entries" do
       visit "/entries/#{entry.id}"
       expect(page).to have_selector("h2", text: entry.title)
@@ -54,7 +54,7 @@ describe "Visiting site" do
     end
   end
 
-  describe "as admin", type: :feature do
+  describe "as admin" do
     let(:entry){ FactoryGirl.create(:new_entry) }
     before(:each) do
       user = FactoryGirl.create(:user)

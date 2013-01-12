@@ -44,7 +44,7 @@ RSpec.configure do |config|
   def check_user_pages_redirection
     it "should redirect away with flash message" do
       response.should redirect_to root_path
-      # flash[:notice].should =~ /sorry/i
+      flash[:notice].should =~ /sorry/i
     end
   end
 
