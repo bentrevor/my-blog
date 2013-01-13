@@ -23,6 +23,20 @@ $green-dark: #006d39;
   box-shadow: $vertical $horizontal $blur $color;
 }
 
+@mixin bottom-border-radius($radius) {
+  -moz-border-bottom-right-radius: $radius;
+  -ms-border-bottom-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  -o-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+
+  -moz-border-bottom-left-radius: $radius;
+  -ms-border-bottom-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -o-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
 .navbar .navbar-inner {
   background: $green-grey; /* fallback color */
 
@@ -47,18 +61,8 @@ $green-dark: #006d39;
 .container {
   background: #d0f0e0;
   @include box-shadow(0, 12px, 10px, #000);
- 
-  -moz-border-bottom-right-radius: 20px;
-  -ms-border-bottom-right-radius: 20px;
-  -webkit-border-bottom-right-radius: 20px;
-  -o-border-bottom-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  @include bottom-border-radius(20px);
 
-  -moz-border-bottom-left-radius: 20px;
-  -ms-border-bottom-left-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -o-border-bottom-left-radius: 20px;
-  border-bottom-left-radius: 20px;
   padding: 20px;
   @include top-to-bottom-gradient($green-lighter, #b0d0c0);
   margin-top: 0px;
@@ -99,6 +103,16 @@ body {
   .smaller {
   font-size: 80%;
   }
+}
+
+.about-me-picture {
+  margin: 30px auto;
+  @include box-shadow(0, 6px, 5px, #000);
+  @include bottom-border-radius(20px);
+}
+
+.redbg {
+  background: red;
 }
 
 @import "bootstrap-responsive";
