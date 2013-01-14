@@ -9,7 +9,7 @@
 
 <div>
   <h2><%= @entry.title %></h2>
-  <p><%= @entry.content %></p>
+  <p><%= markdown @entry.content %></p>
 </div>
 
 <span>(no comments for now, you can <%= mail_to "benjamin.trevor@gmail.com", "email me" %> though)</span>

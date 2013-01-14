@@ -95,7 +95,7 @@ describe "Visiting site", type: :feature do
       before(:each) do
         click_on "Write new entry"
         fill_in "Title", with: "bubbles"
-        fill_in "Content", with: %Q[<p>this is a <a href="www.google.com">markdown test</a></p>]
+        fill_in "Content", with: "this is a [markdown test](www.google.com)"
       end
 
       it "should add entry to database" do
@@ -103,6 +103,7 @@ describe "Visiting site", type: :feature do
       end      
 
       it "should convert content from markdown to html" do
+        click_on "Create Entry"
         expect(page).to have_link("markdown test", href: "www.google.com")
       end
     end
