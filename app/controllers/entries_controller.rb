@@ -40,10 +40,5 @@ class EntriesController < ApplicationController
   end
 
   def about
-    if current_user
-      @title = "yes"
-    else
-      @title = "no"
-    end
   end
 end
