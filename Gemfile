@@ -6,11 +6,12 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'devise'
 gem 'bootstrap-sass'
-gem 'heroku'
+# gem 'heroku'
 gem 'figaro'
 gem 'cancan'
 gem 'rolify'
 gem 'rb-readline'
+gem 'redcarpet'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
