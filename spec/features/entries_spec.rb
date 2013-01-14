@@ -91,11 +91,21 @@ describe "Visiting site", type: :feature do
       expect { click_on "Delete this entry" }.to change { Entry.count }.by(-1)
     end
 
-    it "should be able to write a new entry" do
-      click_on "Write new entry"
-      fill_in "Title", with: "bubbles"
-      fill_in "Content", with: "bubbles"
-      expect { click_on "Create Entry" }.to change { Entry.count }.by(1)
+    describe "writing an entry:" do
+      before(:each) do
+        click_on "Write new entry"
+        fill_in "Title", with: "bubbles"
+        fill_in "Content", with: "this is a [markdown test](www.google.com)"
+      end
+
+      it "should add entry to database" do
+        expect { click_on "Create Entry" }.to change { Entry.count }.by(1)
+      end      
+
+      it "should convert content from markdown to html" do
+        click_on "Create Entry"
+        expect(page).to have_link("markdown test", href: "www.google.com")
+      end
     end
   end
 end
