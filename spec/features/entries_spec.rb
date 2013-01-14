@@ -27,11 +27,11 @@ describe "Visiting site", type: :feature do
     it "should be able to follow sidebar links" do
       new_entry
       visit root_path
-      click_link "Newest Entry"
+      click_on "Newest Entry"
       expect(current_path).to eq("/entries/#{new_entry.id}")
-      click_link "About"
+      click_on "About"
       expect(current_path).to eq("/about")
-      click_link "Archives"
+      click_on "Archives"
       expect(current_path).to eq("/entries")
     end
 
@@ -54,7 +54,7 @@ describe "Visiting site", type: :feature do
       visit new_user_session_path
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
-      click_button "Sign in"
+      click_on "Sign in"
     end
 
     it "should be able to read entries" do
@@ -77,10 +77,10 @@ describe "Visiting site", type: :feature do
       edited_content = "edited content"
 
       visit entry_path(@first_entry)
-      click_link "Edit this entry"
+      click_on "Edit this entry"
       fill_in "Title", with: edited_title
       fill_in "Content", with: edited_content
-      click_button "Update Entry"
+      click_on "Update Entry"
 
       expect(page).to have_selector("h2", text: edited_title)
       expect(page).to have_selector("p", text: edited_content)
@@ -88,15 +88,14 @@ describe "Visiting site", type: :feature do
 
     it "should be able to delete an entry" do
       visit entry_path(entry)
-      expect { click_link "Delete this entry" }.to change { Entry.count }.by(-1)
+      expect { click_on "Delete this entry" }.to change { Entry.count }.by(-1)
     end
 
     it "should be able to write a new entry" do
-      click_link "Write new entry"
-      fill_in "Title", with: "hey"
-      fill_in "Content", with: "hey"
-      expect { click_button "Create Entry" }.to change { Entry.count }.by(1)
+      click_on "Write new entry"
+      fill_in "Title", with: "bubbles"
+      fill_in "Content", with: "bubbles"
+      expect { click_on "Create Entry" }.to change { Entry.count }.by(1)
     end
-
   end
 end
