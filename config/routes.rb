@@ -1,7 +1,6 @@
 Blog::Application.routes.draw do
 
-  devise_for :users, controllers: { registrations: "registrations",
-                                    sessions: "sessions" }
+  devise_for :users, controllers: { registrations: "registrations" }
 
   root to: 'entries#about'
 
