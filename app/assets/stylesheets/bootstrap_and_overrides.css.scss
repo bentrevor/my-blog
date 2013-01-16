@@ -124,20 +124,20 @@ pre {
   -o-box-shadow: inset 0 0 8px $green-light;
   box-shadow: inset 0 0 8px $green-light;
 
-  white-space: normal;
+  overflow-x: scroll;
   
-  /*overflow-x: hidden;*/
-  text-overflow: clip;
-
+ 
+  code {
+    white-space: pre;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
 }
 
-code {
-  text-overflow: clip;
-  /*overflow-x: scr;*/
-}
+
 
 h4 {
-  margin: 2em 0 1em;
+  margin: 2em 0 0.7em;
   text-decoration: underline;
 }
 
