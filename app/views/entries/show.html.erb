@@ -11,12 +11,12 @@
   <%= render "layouts/next-prev-links" %>
   <div class="entry-title">
     <h2><%= @entry.title %></h2>
-    <p class="smaller posted-at"> - posted at <%= @entry.created_at %></p>
+    <p class="smaller posted-on"> - posted on <%= @entry.created_at.to_date.to_formatted_s :long_ordinal %></p>
   </div>
 
   <%= markdown @entry.content %>
   <%= render "layouts/next-prev-links" %>
-  
+
 </div>
 
 <br />
