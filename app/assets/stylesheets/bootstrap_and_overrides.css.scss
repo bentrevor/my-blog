@@ -113,10 +113,6 @@ body {
   @include bottom-border-radius(20px);
 }
 
-.redbg {
-  background: red;
-}
-
 pre {
   -moz-box-shadow: inset 0 0 8px $green-light;
   -ms-box-shadow: inset 0 0 8px $green-light;
@@ -132,6 +128,13 @@ pre {
     word-break: normal;
     overflow-wrap: normal;
   }
+}
+
+code {
+  color: black;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 h4 {
