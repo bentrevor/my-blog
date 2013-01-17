@@ -43,6 +43,10 @@ module Blog
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # don't let development and test environments use ssl
+    # (this is set to true in config/environments/production.rb)
+    config.force_ssl = false
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
