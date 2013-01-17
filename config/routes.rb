@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
 
-  if Rails.env.test?
+  if Entry.count == 0
     root to: 'entries#index'
   else
     root to: 'entries#show', id: Entry.last.id
