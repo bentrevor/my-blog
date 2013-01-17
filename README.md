@@ -22,5 +22,8 @@ What I have now is enough for me to start writing and posting, but there are sti
 * force ssl
 * test in other browsers
 * add capistrano
+* add paperclip to upload images
+* fix <pre> word wrapping
+* next/previous links
 
 Feedback is always appreciated - [shoot me an email](mailto:benjamin.trevor@gmail.com).
