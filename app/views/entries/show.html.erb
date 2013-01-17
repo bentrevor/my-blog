@@ -8,8 +8,12 @@
 </div>
 
 <div>
-  <h2><%= @entry.title %></h2>
-  <p><%= markdown @entry.content %></p>
+  <div class="entry-title">
+    <h2><%= @entry.title %></h2>
+    <p class="smaller posted-at"> - posted at <%= @entry.created_at %></p>
+  </div>
+
+  <%= markdown @entry.content %>
 </div>
 
 <br />
