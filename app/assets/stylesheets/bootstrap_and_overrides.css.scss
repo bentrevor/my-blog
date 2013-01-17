@@ -60,12 +60,12 @@ $green-dark: #006d39;
 }
 
 .container {
-  background: #d0f0e0;
+  background: red;/*#d0f0e0;*/
   @include box-shadow(0, 12px, 10px, black);
   @include bottom-border-radius(20px);
 
   padding: 20px;
-  @include top-to-bottom-gradient($green-lighter, $green-light);
+  /*@include top-to-bottom-gradient($green-lighter, $green-light);*/
   margin-top: 0px;
 }
 
