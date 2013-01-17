@@ -2,8 +2,12 @@ Blog::Application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
 
-  root to: 'entries#show', id: Entry.last.id
-
+  if Rails.env.test?
+    root to: 'entries#index'
+  else
+    root to: 'entries#show', id: Entry.last.id
+  end
+  
   resources :entries
   match "/about", to: 'entries#about'
 
