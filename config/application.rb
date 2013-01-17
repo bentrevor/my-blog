@@ -73,5 +73,9 @@ module Blog
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # prevent heroku from trying to initialize the application and connect to the
+    # database during slug compilation
+    config.assets.initialize_on_precompile = false
+
   end
 end
