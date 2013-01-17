@@ -8,12 +8,15 @@
 </div>
 
 <div>
+  <%= render "layouts/next-prev-links" %>
   <div class="entry-title">
     <h2><%= @entry.title %></h2>
     <p class="smaller posted-at"> - posted at <%= @entry.created_at %></p>
   </div>
 
   <%= markdown @entry.content %>
+  <%= render "layouts/next-prev-links" %>
+  
 </div>
 
 <br />

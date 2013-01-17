@@ -3,7 +3,6 @@ class EntriesController < ApplicationController
   load_and_authorize_resource except: [ :about, :show ]
 
   def index
-    @entries = Entry.all
   end
 
   def show
