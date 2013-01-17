@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
 
-  root to: 'entries#about'
+  root to: 'entries#show', id: Entry.last.id
 
   resources :entries
   match "/about", to: 'entries#about'
