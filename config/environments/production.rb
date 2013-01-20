@@ -30,4 +30,7 @@ Blog::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # explicitly tell heroku to precompile my js files
+  config.assets.precompile += %w( tic-tac-toe.js )
+
 end
