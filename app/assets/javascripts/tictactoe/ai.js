@@ -150,7 +150,7 @@ function game_over() {
 
   var game_over_text = document.createTextNode("You didn't win.  Refresh the page to play again.");
 
-  document.body.insertBefore(game_over_text, document.body.firstChild.nextSibling.nextSibling);
+  document.body.insertBefore(game_over_text, document.body.firstChild.nextSibling.nextSibling.nextSibling);
 }
 
 function win_or_block() {
