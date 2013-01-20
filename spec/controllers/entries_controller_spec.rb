@@ -150,4 +150,12 @@ describe EntriesController do
       response.should render_template :about
     end
   end
+
+  describe "tictactoe action" do
+    it "should return http success and render :tictactoe template" do
+      get :tic_tac_toe
+      response.should be_success
+      response.should render_template :tic_tac_toe
+    end    
+  end
 end

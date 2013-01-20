@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= javascript_include_tag "tictactoe/ai.js" %>
+    <%= javascript_include_tag "tictactoe/draw_functions.js" %>
+    <%= javascript_include_tag "tictactoe/game.js" %>
+  </head>
+
+  <body onload="init();">
+    <canvas id="myCanvas" width="300" height="300" style="box-shadow: 0 0 10px blue;"></canvas>
+  </body>
+</html>

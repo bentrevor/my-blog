@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
-  before_filter :authenticate_user!, except: [ :about, :show, :index ]
-  load_and_authorize_resource except: [ :about, :show ]
+  before_filter :authenticate_user!, except: [ :about, :show, :index, :tic_tac_toe ]
+  load_and_authorize_resource except: [ :about, :show, :tic_tac_toe ]
 
   def index
   end
@@ -39,5 +39,9 @@ class EntriesController < ApplicationController
   end
 
   def about
+  end
+
+  def tic_tac_toe
+    render 'entries/tic_tac_toe'
   end
 end
