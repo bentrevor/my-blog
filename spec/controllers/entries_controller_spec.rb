@@ -156,6 +156,6 @@ describe EntriesController do
       get :tic_tac_toe
       response.should be_success
       response.should render_template :tic_tac_toe
-    end    
+    end
   end
 end
