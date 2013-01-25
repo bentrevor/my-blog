@@ -44,6 +44,27 @@ describe "Visiting site", type: :feature do
       expect_redirect_away_from "/users/sign_up"
       expect_redirect_away_from "/users/edit"
     end
+
+    describe "next/previous links:" do
+      before(:each) do
+        entry = FactoryGirl.create(:entry)
+        new_entry = FactoryGirl.create(:new_entry)
+      end
+
+      it "should both be visible for most entries" do
+        visit entry_path(Entry.first)
+        first(:link, "next entry -->").click
+        expect(page).to have_selector("a", text: "previous")
+        expect(page).to have_selector("a", text: "next")
+      end
+
+      it "should not be visible for first/last entries" do
+        visit entry_path(Entry.last)
+        expect(page).not_to have_selector("a", text: "next")
+        visit entry_path(Entry.first)
+        expect(page).not_to have_selector("a", text: "previous")
+      end
+    end
   end
 
   describe "as admin" do
