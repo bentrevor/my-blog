@@ -1,7 +1,5 @@
 var canvas = null;
 var context = null;
-var first_question = new Image();
-// var open_positions = [0,1,2,3,4,5,6,7,8]
 var x_positions = [0,0,0,0,0,0,0,0,0];
 var o_positions = [0,0,0,0,0,0,0,0,0];
 var winning_combinations = [[0,1,2],
@@ -11,21 +9,23 @@ var winning_combinations = [[0,1,2],
                             [1,8,5],
                             [2,3,4],
                             [0,8,4],
-                            [6,2,8]];
-var human_played_first = false;
-var game_started = false;
-var last_human_move = null;
-var blocked = false;
+                            [6,8,2]];
+var TOTAL_POSITIONS = x_positions.length;
+var TOTAL_WINNING_COMBINATIONS = winning_combinations.length;
+var x_img = new Image();
+var o_img = new Image();
 
 function init() {
   canvas = document.getElementById('myCanvas');
-  canvas.addEventListener("click", handle_mouse_click, false);
+  canvas.addEventListener("click", handle_first_click, false);
   context = canvas.getContext('2d');
+  
+  x_img.src = 'assets/x.png';
+  o_img.src = 'assets/o.png';
 
-  first_question.onload = function() {
-    context.drawImage(first_question, 0, 0);
-  }
-  first_question.src = 'assets/first-question.png'
+  draw_menu();
+
+  add_game_over_element();
 }
 
 function get_cursor_position(e) {
@@ -43,50 +43,77 @@ function get_cursor_position(e) {
   x -= canvas.offsetLeft;
   y -= canvas.offsetTop;
 
-  if (x < 100) {
-    if (y < 100)            { return 0; }
-    if (y > 100 && y < 200) { return 7; }
-    if (y > 200)            { return 6; }
+  if (y < 100) {
+    if (x < 100)            { return 0; }
+    if (x > 110 && x < 200) { return 1; }
+    if (x > 210)            { return 2; }
   }
-  if (x > 100 && x < 200) {
-    if (y < 100)            { return 1; }
-    if (y > 100 && y < 200) { return 8; }
-    if (y > 200)            { return 5; } 
+  if (y > 110 && y < 200) {
+    if (x < 100)            { return 7; }
+    if (x > 110 && x < 200) { return 8; }
+    if (x > 210)            { return 3; } 
   }
-  if (x > 200) {
-    if (y < 100)            { return 2; }
-    if (y > 100 && y < 200) { return 3; }
-    if (y > 200)            { return 4; }
+  if (y > 210 && y < 300) {
+    if (x < 100)            { return 6; }
+    if (x > 110 && x < 200) { return 5; }
+    if (x > 210)            { return 4; }
+  }
+
+  if (y > 380 && y < 400) {
+    if (x > 50 && x < 110)  { return "yes"; }
+    if (x > 190 && x < 250) { return "no"; }
   }
 }
 
+function handle_first_click(e) {
+  var answer = get_cursor_position(e);
 
+  if (typeof(answer) == "string") {
+    if (answer == "no") {
+      make_move('o', 8);
+    }
+
+    context.clearRect(0, 300, 300, 150);
+    canvas.removeEventListener("click", handle_first_click, false);
+    canvas.addEventListener("click", handle_mouse_click, false);
+  }
+}
 
 function handle_mouse_click(e) {
   var position = get_cursor_position(e);
 
-  // handle first click to decide who goes first
-  if (!game_started) {
-    if (position == 7) {
-      // human plays first
-      human_played_first = true;
-      draw_grid();
-      game_started = true;
+  // only call decide_for_computer() if position was a valid move
+  if (check_empty(position)){
+    make_move('x', position);
+
+    computer_move = decide_for_computer(position);
+    if (computer_move == -1) {
+      game_over();
     }
-    else if (position == 3) {
-      // computer plays first
-      draw_grid();
-      put_o_in(8);
-      game_started = true;
+    else {
+      make_move('o', computer_move);
+
+      var winning_combo_index = computer_wins();
+      if (winning_combo_index != -1) {
+        draw_winning_line(winning_combo_index);
+        game_over();
+      }
+      else if (board_is_full()) {
+        game_over();
+      }
     }
-  }
-  else if (check_empty(position)){
-      put_x_in(position);
-      move_for_computer();
   }
 }
 
-function x_clicks() {
-  return x_positions[0] + x_positions[1] + x_positions[2] + x_positions[3] + 
-    x_positions[4] + x_positions[5] + x_positions[6] + x_positions[7] + x_positions[8];
+function game_over() {
+  draw_game_over_text();
+  canvas.removeEventListener("click", handle_mouse_click, false);
+  add_game_over_element();
+}
+
+function add_game_over_element() {
+  var game_over_text = document.createElement('p');
+  game_over_text.setAttribute('id', human_wins());
+
+  document.body.insertBefore(game_over_text, document.body.firstChild.nextSibling.nextSibling);
 }
