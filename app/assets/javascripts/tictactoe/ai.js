@@ -83,7 +83,9 @@ function win_or_block() {
 
 // handles special cases for when the human plays non-center first
 function handle_second_click() {
-  if (win_or_block() != -1) { return win_or_block(); }
+  var required_move = win_or_block();
+  if (required_move != -1) { return required_move; }
+  
   var smaller = get_smaller();
   var larger = get_larger();
 
