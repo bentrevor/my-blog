@@ -1,8 +1,9 @@
 class EntriesController < ApplicationController
   before_filter :authenticate_user!, except: [ :about, :show, :index, :tic_tac_toe ]
-  load_and_authorize_resource except: [ :about, :show, :tic_tac_toe ]
+  load_and_authorize_resource except: [ :index, :about, :show, :tic_tac_toe ]
 
   def index
+    @entries = Entry.order('created_at DESC').all
   end
 
   def show

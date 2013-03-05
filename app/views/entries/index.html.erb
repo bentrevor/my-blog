@@ -1,7 +1,7 @@
 <h1>Archives</h1>
 
 <ul>
-  <% @entries.reverse.each do |entry| %>
+  <% @entries.each do |entry| %>
     <li class="no-bullet"><%= link_to entry.title, entry_path(entry), action: :show %> - <span class="smaller"><%= time_ago_in_words(entry.created_at) %> ago</span></li>
   <% end %>
 </ul>
