@@ -7,10 +7,10 @@ class Entry < ActiveRecord::Base
 
 
   def next
-    @entry = Entry.where("id > ?", id).first
+    @entry = Entry.where("id > ?", id).order("id ASC").first
   end
 
   def prev
-    @entry = Entry.where("id < ?", id).last
+    @entry = Entry.where("id < ?", id).order("id DESC").first
   end
 end
