@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe EntriesController do
-  before(:each) do
-    @entry = FactoryGirl.create(:entry)
-    @user = FactoryGirl.create(:user)
-    @user.add_role :admin
-    sign_in @user
-  end
-
   describe "index action" do
     before { 2.times { FactoryGirl.create(:new_entry) } }
     before { get :index }
@@ -58,8 +51,8 @@ describe EntriesController do
       before { @attrs = FactoryGirl.attributes_for(:new_entry) }
 
       it "should add entry to database" do
-        expect { 
-          post :create, entry: @attrs 
+        expect {
+          post :create, entry: @attrs
         }.to change { Entry.count }.by(1)
       end
 
@@ -75,7 +68,7 @@ describe EntriesController do
         expect { post :create, Entry.new(title: "test for blank content")
                                           }.not_to change { Entry.count }
 
-        expect { post :create, Entry.new(content: "test for blank title") 
+        expect { post :create, Entry.new(content: "test for blank title")
                                           }.not_to change { Entry.count }
       end
 
@@ -132,8 +125,8 @@ describe EntriesController do
 
   describe "destroy action" do
     it "should remove the entry from the database" do
-      expect { 
-        delete :destroy, id: @entry 
+      expect {
+        delete :destroy, id: @entry
       }.to change { Entry.count }.by(-1)
     end
 
