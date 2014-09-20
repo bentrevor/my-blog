@@ -47,7 +47,7 @@ $green-dark: #006d39;
   border: 1px solid $green-dark;
 
   @include box-shadow(0, 10px, 30px, black);
-
+  @include bottom-border-radius(10px);
 
   margin-bottom: 50px;
 
@@ -56,6 +56,7 @@ $green-dark: #006d39;
     line-height: 1em;
     color: black;
     text-shadow: 1px 1px 0 $green-lightest;
+    padding: 0.3em;
   }
 }
 

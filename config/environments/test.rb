@@ -31,4 +31,7 @@ Blog::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # get rspec to stop complaining
+  config.eager_load = false
 end

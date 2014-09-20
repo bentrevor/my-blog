@@ -10,7 +10,7 @@ gem 'puma'
 group :assets do
   gem 'sass-rails'
   gem 'uglifier'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '~> 2.2'
 end
 
 group :development, :test do
