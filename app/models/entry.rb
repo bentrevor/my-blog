@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
     @entry = Entry.where("id > ?", id).order("id ASC").first
   end
 
-  def prev
+  def previous
     @entry = Entry.where("id < ?", id).order("id DESC").first
   end
 end

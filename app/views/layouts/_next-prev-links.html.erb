@@ -1,6 +1,6 @@
 <div class="next-prev-links">
   <% if @entry != Entry.first %>
-    <%= link_to "<-- previous entry", @entry.prev, class: "pull-left" %>
+    <%= link_to "<-- previous entry", @entry.previous, class: "pull-left" %>
   <% end %>
   <% if @entry != Entry.last %>
     <%= link_to "next entry -->", @entry.next, class: "pull-right" %>

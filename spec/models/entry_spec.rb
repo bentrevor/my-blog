@@ -13,4 +13,12 @@ describe Entry do
     entry.content = ''
     expect(entry.valid?).to be false
   end
+
+  it 'stays in order of id' do
+    entry.save
+    second_entry = Entry.create :title => 'second title', :content => 'second content'
+
+    expect(entry.next).to eq second_entry
+    expect(second_entry.previous).to eq entry
+  end
 end
