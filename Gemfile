@@ -3,9 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 3.2.11'
 gem 'pg'
 gem 'jquery-rails'
-gem 'devise'
 gem 'figaro'
-gem 'cancan'
 gem 'rolify'
 gem 'rb-readline'
 gem 'redcarpet'
@@ -19,7 +17,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 group :test do
