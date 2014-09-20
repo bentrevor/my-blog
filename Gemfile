@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
 gem 'rails', '~> 3.2.11'
 gem 'pg'
 gem 'jquery-rails'
 gem 'devise'
-gem 'bootstrap-sass'
-# gem 'heroku'
 gem 'figaro'
 gem 'cancan'
 gem 'rolify'
@@ -34,17 +31,3 @@ end
 group :production do
   gem 'thin'
 end
-
-
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
