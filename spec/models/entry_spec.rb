@@ -1,28 +1,16 @@
 require 'spec_helper'
 
 describe Entry do
-  before { @entry = FactoryGirl.create(:entry) }
-  subject { @entry }
+  let(:entry) { Entry.new :title => 'title', :content => 'content' }
 
-  it { should respond_to :title }
-  it { should respond_to :content }
+  it 'is not valid without a title or content' do
+    expect(entry.valid?).to be true
 
-  it { should be_valid }
+    entry.title = ''
+    expect(entry.valid?).to be false
 
-  describe "with blank title" do
-    before { @entry.title = "" }
-
-    it "should not be valid" do
-      @entry.should_not be_valid
-    end
+    entry.title = 'title'
+    entry.content = ''
+    expect(entry.valid?).to be false
   end
-
-  describe "with blank content" do
-    before { @entry.content = "" }
-
-    it "should not be valid" do
-      @entry.should_not be_valid
-    end
-  end
-
 end

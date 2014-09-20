@@ -1,24 +1,19 @@
 require 'spec_helper'
 
-describe EntriesController, :type => :controller do
-  describe "#index" do
-    it "has a route and template" do
-      get :index
+describe EntriesController do
+  it "can GET index" do
+    get :index
 
-      response.should be_success
-      response.should render_template :index
-    end
-
-    it "should create @entries array" do
-      assigns(:entries).should eq([Entry.find(1), Entry.find(2), Entry.find(3)])
-      assigns(:entries).length.should eq(Entry.count)
-    end
+    expect(response.status).to be 200
   end
 
   describe "show action" do
     before { get :show, id: @entry }
 
     it "should return http success and render :show template" do
+
+      get :show, :id => 1
+
       response.should be_success
       response.should render_template :show
     end

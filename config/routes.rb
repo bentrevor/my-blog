@@ -3,6 +3,6 @@ Blog::Application.routes.draw do
 
   resources :entries
 
-  get "/about", to: 'entries#about'
-  get "/tic-tac-toe", to: 'entries#tic_tac_toe'
+  get "/about",       to: 'status#about'
+  get "/tic-tac-toe", to: 'status#tic_tac_toe'
 end
