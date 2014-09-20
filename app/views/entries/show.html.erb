@@ -1,24 +1,11 @@
-<div class="btn-group">
-  <% if can? :edit, @entry %>
-    <%= link_to "Edit this entry", edit_entry_path(@entry), class: "btn" %>
-  <% end %>
-  <% if can? :delete, @entry %>
-    <%= link_to "Delete this entry", {action: :destroy}, method: :delete, class: "btn" %>
-  <% end %>
-</div>
-
 <div>
-  <%= render "layouts/next-prev-links" %>
+  <%= render "layouts/nextprev" %>
   <div class="entry-title">
     <h2><%= @entry.title %></h2>
     <p class="smaller posted-on"> - posted on <%= @entry.created_at.to_date.to_formatted_s :long_ordinal %></p>
   </div>
 
   <%= markdown @entry.content %>
-  <%= render "layouts/next-prev-links" %>
+  <%= render "layouts/nextprev" %>
 
 </div>
-
-<br />
-<br />===============<br />
-<span class="smaller">(no comments for now, you can <%= mail_to "benjamin.trevor@gmail.com", "email me" %> though)</span>

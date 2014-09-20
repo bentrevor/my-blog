@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Ben Trevor's Blog</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -18,7 +19,7 @@
       <div class="span3 sidebar hidden-phone"><%= render "layouts/sidebar" %></div>
     </div>
   </div>
-  
+
   <div class="debug-container">
     <%= debug(params) if Rails.env.development? %>
   </div>

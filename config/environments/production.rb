@@ -33,4 +33,6 @@ Blog::Application.configure do
   # explicitly tell heroku to precompile my js files
   config.assets.precompile += %w( tic-tac-toe.js )
 
+  # get rspec to stop complaining
+  config.eager_load = true
 end

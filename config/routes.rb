@@ -1,16 +1,9 @@
 Blog::Application.routes.draw do
+  root to: 'entries#index'
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  get '/archives',    to: 'entries#index'
+  get '/entries/:id', to: 'entries#show', as: :entry
 
-  if Entry.count == 0
-    root to: 'entries#index'
-  else
-    root to: 'entries#show', id: Entry.last.id
-  end
-  
-  resources :entries
-  match "/about", to: 'entries#about'
-
-  match "/tic-tac-toe", to: 'entries#tic_tac_toe'
-
+  get "/about",       to: 'status#about'
+  get "/tic-tac-toe", to: 'status#tic_tac_toe'
 end
