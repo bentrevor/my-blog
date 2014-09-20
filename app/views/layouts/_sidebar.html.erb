@@ -1,8 +1,6 @@
 <nav>
   <ul>
-    <li><%= link_to "Newest Entry", entry_path(Entry.last), action: :show   %></li>
-    <li><%= link_to "About",        about_path,             action: :about  %></li>
-    <li><%= link_to "Archives",     entries_path,           action: :index  %></li>
-    <li><%= link_to "Github",       "https://github.com/bubbles90210"       %></li>
+    <li><%= link_to "Archives", archives_path, action: :index  %></li>
+    <li><%= link_to "Github",   "https://github.com/bentrevor" %></li>
   </ul>
 </nav>

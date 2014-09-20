@@ -29,6 +29,9 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  # don't have to use :type => :controller to get http methods
+  config.infer_spec_type_from_file_location!
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
