@@ -1,22 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 4.1'
 gem 'pg'
 gem 'jquery-rails'
 gem 'figaro'
-gem 'rolify'
 gem 'rb-readline'
 gem 'redcarpet'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
   gem 'bootstrap-sass'
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '> 3.0'
   gem 'pry'
 end
 

@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-describe EntriesController do
-  describe "index action" do
-    before { 2.times { FactoryGirl.create(:new_entry) } }
-    before { get :index }
+describe EntriesController, :type => :controller do
+  describe "#index" do
+    it "has a route and template" do
+      get :index
 
-    it "should return http success and render :index template" do
       response.should be_success
       response.should render_template :index
     end
