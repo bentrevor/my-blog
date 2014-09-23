@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - rbx-2.2.10
+
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:reset
+  - bundle exec rake db:migrate
+
+script: bundle exec rake
+bundler_args: --without development --path=~/.bundle
